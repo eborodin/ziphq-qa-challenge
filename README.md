@@ -60,3 +60,7 @@ We expect you to demonstrate how you would delegate and collaborate with offshor
 
 Contacts
 If you have any questions for environment, email me at james.lim@ziphq.com 
+
+
+To run the test script 
+`npx playwright test myTest.spec.js --project=chromium --headed`
