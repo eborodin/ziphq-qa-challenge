@@ -1,0 +1,22 @@
+{
+  "name": "ziphq-qa-challenge",
+  "version": "1.0.0",
+  "description": "Take home Challenge Example Walk Through Problem Statements Test company - https://qa.ziphq.com/admin/company/9ca76a80-b7a0-4b0d-aea7-ac4d8de3698b",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eborodin/ziphq-qa-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eborodin/ziphq-qa-challenge/issues"
+  },
+  "homepage": "https://github.com/eborodin/ziphq-qa-challenge#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.1"
+  }
+}
