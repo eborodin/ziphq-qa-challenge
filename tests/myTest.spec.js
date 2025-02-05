@@ -1,51 +1,58 @@
-export default {
-    use: {
-        headless: true, // Run all tests in headless mode
-    },
-};
-
 import { test, expect, chromium } from '@playwright/test';
+import { PageLocators } from '../locators.js';
+import { LoginCredentials } from '../credentials';
+import { pageURLs } from '../config.js'
+import { navigateAndWait } from '../helpers.js';
 test.use({ browserName: 'chromium' });
 
-for (let i = 0; i < 1; i++) {  // Run the test 5 times
-    test(`Login loop ${i + 1}`, async ({ page }) => {
-        await page.goto('https://qa.ziphq.com/login');
+// for (let i = 0; i < 1; i++) {  // Run the test 5 times
+//     test(`Login loop ${i + 1}`, async ({ page }) => {
+//         await page.goto(pageURLs.loginPage);
+test('Navigate to Login Page', async ({ page }) => {
+    await navigateAndWait(page, pageURLs.loginPage, 3000);  // Use stored URL
+    await expect(page).toHaveURL(pageURLs.loginPage);
 
-        const signInZip = page.locator('text="Sign in to Zip"', { timeout: 5000 });
+    await expect(page.locator(PageLocators.zipLogoText)).toBeVisible();
+    // const signInZip = page.locator('text="Sign in to Zip"', { timeout: 5000 });
+    // const isTextVisible = await signInZip.isVisible();
+    // console.log(isTextVisible ? "Login Text is visible!" : "Login Text is NOT visible!");
 
-        const isTextVisible = await signInZip.isVisible();
-        console.log(isTextVisible ? "Login Text is visible!" : "Login Text is NOT visible!");
+    const emailField = page.locator(PageLocators.emailField);
+    const emailNextButton = page.locator(PageLocators.emailNextButton);
+    const forgotTextPW = page.locator(PageLocators.forgotTextPW);
+    const passwordField = page.locator(PageLocators.passwordField);
+    const loginButton = page.locator(PageLocators.loginButton)
+    await emailField.click();
+    await emailField.fill(LoginCredentials.email);
+    await emailNextButton.click();
+    // await page.waitForTimeout(3000);
+    // await expect(page).toHaveURL(pageURLs.loginPage)
+    await expect(page.locator(PageLocators.forgotTextPW)).toBeVisible();
 
-        const testEmail = "enborodin+qatesting@gmail.com"
-        const testPW = "qqZT64Vwf4##v9&5"
+    // console.log(forgotTextPW ? 'Forgot Password is visible' : 'Forgot Password is NOT present');
+    await passwordField.fill(LoginCredentials.password);
+    await loginButton.click()
+    await page.waitForTimeout(3000);
 
-        const emailField = page.locator('//input[@id="email"]', { timeout: 5000 })
-        const emailNextButton = page.locator('//div//button[@class="bp730pe s1hfe04e sienn4l sslpsxn beysths ciu5cso l16phmm6"]/span');
-        const forgotTextPW = page.locator('text = Forgot your password?"', { timeout: 5000 });
-        const passwordField = page.locator('//input[@id="password"]', { timeout: 5000 })
-        const loginButton = page.locator('//button[@data-testid="loginButton"]', { timeout: 5000 })
+    // Test Forgot your password?
+    // await forgotTextPW.click()
+    // const resetPWText = page.locator('text = "Reset your password"', { timeout: 5000 });
+    // const isForgotPWText = await resetPWText.isVisible();
+    // console.log(isForgotPWText ? "Text is visible!" : "Text is NOT visible!");
 
-        //await page.screenshot({ path: 'before-click.png' });
-        await emailField.click();
-        //await page.screenshot({ path: 'after-click.png' });
-        await emailField.fill(testEmail);
-        await emailNextButton.click();
-        await page.waitForTimeout(3000);  // Wait for 3 seconds
-        //await expect(page).toHaveURL(forgotTextPW);
+    // Get to the Dashboard 
+    //await page.goto(pageURLs.dashboard);
+    await navigateAndWait(page, pageURLs.dashboard, 3000)
+    await expect(page).toHaveURL(pageURLs.dashboard);
+    await expect(page.locator(PageLocators.challangeHeader)).toBeVisible();
+    // const isVisible = await page.locator(PageLocators.challangeHeader).isVisible()
+    // console.log(isVisible ? 'Take home Challenge is visible' : 'Take home Challenge is NOT present');
+    // Verify that "Take home Challenge" header is visible
 
-        console.log(forgotTextPW ? 'Element is visible' : 'Element is NOT present');
-        await passwordField.fill(testPW);
-        await loginButton.click()
-        await page.waitForTimeout(10000);  // Wait for 3 seconds
+    await page.waitForTimeout(3000)
 
-        // Clicking forgot PW
-        // await forgotTextPW.click()
-        // const resetPWText = page.locator('text = "Reset your password"', { timeout: 5000 });
-        // const isForgotPWText = await resetPWText.isVisible();
-        // console.log(isForgotPWText ? "Text is visible!" : "Text is NOT visible!");
+});
 
-    });
-}
 
 // const isVisible = await page.locator("//div[@class='cfu91ot']//h1[@class='s1f4rh5s]", { timeout: 5000 }).isVisible()
 // console.log(isVisible ? 'Element is visible' : 'Element is NOT present');
