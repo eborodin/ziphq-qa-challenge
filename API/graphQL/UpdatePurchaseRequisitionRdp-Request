@@ -1,0 +1,152 @@
+# Updated Department under Agreement details section --> | Services |
+mutation UpdatePurchaseRequisitionRdp(
+  $id: String!
+  $currency: String
+  $subsidiaryId: String
+  $departmentId: String
+  $itemAccountId: String
+  $locationId: String
+  $glCodeId: String
+  $virtualCardSpendingLimits: [InputSpendingLimit!]
+  $virtualCardCardholderId: String
+  $virtualCardAutoLockDate: Date
+  $virtualCardMerchantLockType: MerchantLockType
+  $engagementId: String
+) {
+  updatePurchaseRequisition(
+    requisitionId: $id
+    currency: $currency
+    subsidiaryId: $subsidiaryId
+    departmentId: $departmentId
+    itemAccountId: $itemAccountId
+    locationId: $locationId
+    glCodeId: $glCodeId
+    virtualCardSpendingLimits: $virtualCardSpendingLimits
+    virtualCardCardholderId: $virtualCardCardholderId
+    virtualCardAutoLockDate: $virtualCardAutoLockDate
+    virtualCardMerchantLockType: $virtualCardMerchantLockType
+    engagementId: $engagementId
+  ) {
+    purchaseRequisition {
+      id
+      ...ContractDetailsPurchaseRequisitionExtended
+      __typename
+    }
+    workflowDiagramUpdated
+    __typename
+  }
+}
+
+fragment ContractDetailsPurchaseRequisitionExtended on PurchaseRequisition {
+  id
+  approvalStatus
+  attributesData {
+    id
+    attributeConfigId
+    attributeData
+    attributeId
+    attributeName
+    entityType
+    questionOptions {
+      key
+      name
+      __typename
+    }
+    questionPrompt
+    questionSeen
+    questionType
+    valueViewOnly
+    __typename
+  }
+  canEditPricingDetail
+  currency
+  department {
+    id
+    guid
+    erpIds
+    name
+    __typename
+  }
+  description
+  estimatedPurchasePrice
+  estimatedPurchasePriceCents
+  estimatedPurchasePriceCentsUsd
+  glCode {
+    id
+    guid
+    name
+    __typename
+  }
+  itemAccount {
+    id
+    guid
+    name
+    __typename
+  }
+  location {
+    id
+    guid
+    name
+    __typename
+  }
+  name
+  purchaseCategory {
+    id
+    name
+    __typename
+  }
+  purchaseSubcategory {
+    id
+    name
+    __typename
+  }
+  requestNumber
+  subsidiary {
+    id
+    guid
+    displayName
+    erpIds
+    name
+    status
+    __typename
+  }
+  subsidiaryGuid
+  vendor {
+    id
+    subsidiaries {
+      id
+      guid
+      displayName
+      name
+      status
+      __typename
+    }
+    __typename
+  }
+  virtualCardAutoLockDate
+  virtualCardCardholder {
+    ...UserBase
+    __typename
+  }
+  virtualCardMerchantLockType
+  virtualCardSpendingLimits {
+    amountCents
+    interval
+    __typename
+  }
+  __typename
+}
+
+fragment UserBase on User {
+  id
+  deactivated
+  email
+  firstName
+  fullName
+  lastName
+  __typename
+}
+{
+  "id": "067a39c8-1021-7252-8000-e241dfc30a46",
+  "departmentId": "44435da4-3f6f-4dd7-a6e3-11ad323634f7"
+}

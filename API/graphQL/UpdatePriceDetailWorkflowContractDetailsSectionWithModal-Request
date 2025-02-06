@@ -1,0 +1,328 @@
+// Sent an Updated price in Agreement details section --> | 99.99 |
+mutation UpdatePriceDetailWorkflowContractDetailsSectionWithModal(
+  $id: String!
+  $currency: String
+  $initialEstimatedCents: BigInt
+  $totalCents: BigInt
+  $paymentFrequency: Int
+  $paymentMethod: Int
+  $paymentTerms: String
+  $startDate: String
+  $executionDate: String
+  $endDate: String
+  $renewalDate: String
+  $renewalNoticeDate: String
+  $taxIncludedType: Int
+  $contractLength: Int
+  $totalCentsByYear: [BigInt]
+  $attributeValues: JSONString
+) {
+  updatePriceDetail(
+    priceDetailId: $id
+    currency: $currency
+    initialEstimatedCents: $initialEstimatedCents
+    totalCents: $totalCents
+    paymentFrequency: $paymentFrequency
+    paymentMethod: $paymentMethod
+    paymentTerms: $paymentTerms
+    startDate: $startDate
+    executionDate: $executionDate
+    endDate: $endDate
+    renewalDate: $renewalDate
+    renewalNoticeDate: $renewalNoticeDate
+    taxIncludedType: $taxIncludedType
+    contractLength: $contractLength
+    totalCentsByYear: $totalCentsByYear
+    attributeValues: $attributeValues
+  ) {
+    priceDetail {
+      id
+      ...ContractDetailsRequisitionPriceDetailFragment
+      purchaseRequisition {
+        id
+        ...ContractDetailsPurchaseRequisitionExtended
+        sourcingSavingsPromotionText
+        __typename
+      }
+      __typename
+    }
+    workflowDiagramUpdated
+    __typename
+  }
+}
+
+fragment ContractDetailsRequisitionPriceDetailFragment on RequisitionPriceDetail {
+  id
+  guid
+  attributes {
+    id
+    config {
+      id
+      attributeName
+      hideOnRequest
+      key
+      __typename
+    }
+    data
+    __typename
+  }
+  contractLength
+  currency
+  endDate
+  executionDate
+  initialCurrency
+  initialEstimatedCents
+  insight {
+    priceSummaryInsight {
+      ...PricingInsight
+      __typename
+    }
+    __typename
+  }
+  lineItems {
+    id
+    guid
+    attributes {
+      id
+      config {
+        id
+        __typename
+      }
+      data
+      __typename
+    }
+    currency
+    department {
+      id
+      guid
+      name
+      __typename
+    }
+    description
+    endDate
+    expenseCategory {
+      id
+      guid
+      glCode {
+        id
+        guid
+        name
+        __typename
+      }
+      name
+      __typename
+    }
+    glCode {
+      id
+      guid
+      name
+      __typename
+    }
+    itemAccount {
+      id
+      guid
+      name
+      __typename
+    }
+    lineType
+    location {
+      id
+      guid
+      name
+      __typename
+    }
+    note
+    quantity
+    quantityDecimal
+    quantityDecimalStr
+    rateCents
+    rateCentsRemaining
+    startDate
+    totalCents
+    totalCentsUsd
+    __typename
+  }
+  note
+  paymentFrequency
+  paymentMethod
+  paymentTerms
+  poNumber
+  remainingCents
+  renewalDate
+  renewalNoticeDate
+  savingStatus
+  startDate
+  status
+  taxIncludedType
+  totalCents
+  totalCentsByYear
+  transactionDate
+  __typename
+}
+
+fragment PricingInsight on PricingInsight {
+  benchmarkingResult
+  blurb
+  boxPlotData {
+    boxPlotDataPoints {
+      fillColor
+      strokeColor
+      tooltip {
+        ...InsightTooltip
+        __typename
+      }
+      value
+      __typename
+    }
+    fillColor
+    firstQuartile
+    key
+    max
+    median
+    min
+    strokeColor
+    thirdQuartile
+    tooltip {
+      ...InsightTooltip
+      __typename
+    }
+    __typename
+  }
+  horizontalAxis {
+    label
+    __typename
+  }
+  title
+  verticalAxis {
+    label
+    __typename
+  }
+  __typename
+}
+
+fragment InsightTooltip on InsightTooltip {
+  ... on PopperTooltip {
+    lines
+    __typename
+  }
+  ... on TableTooltip {
+    rows
+    width
+    __typename
+  }
+  __typename
+}
+
+fragment ContractDetailsPurchaseRequisitionExtended on PurchaseRequisition {
+  id
+  approvalStatus
+  attributesData {
+    id
+    attributeConfigId
+    attributeData
+    attributeId
+    attributeName
+    entityType
+    questionOptions {
+      key
+      name
+      __typename
+    }
+    questionPrompt
+    questionSeen
+    questionType
+    valueViewOnly
+    __typename
+  }
+  canEditPricingDetail
+  currency
+  department {
+    id
+    guid
+    erpIds
+    name
+    __typename
+  }
+  description
+  estimatedPurchasePrice
+  estimatedPurchasePriceCents
+  estimatedPurchasePriceCentsUsd
+  glCode {
+    id
+    guid
+    name
+    __typename
+  }
+  itemAccount {
+    id
+    guid
+    name
+    __typename
+  }
+  location {
+    id
+    guid
+    name
+    __typename
+  }
+  name
+  purchaseCategory {
+    id
+    name
+    __typename
+  }
+  purchaseSubcategory {
+    id
+    name
+    __typename
+  }
+  requestNumber
+  subsidiary {
+    id
+    guid
+    displayName
+    erpIds
+    name
+    status
+    __typename
+  }
+  subsidiaryGuid
+  vendor {
+    id
+    subsidiaries {
+      id
+      guid
+      displayName
+      name
+      status
+      __typename
+    }
+    __typename
+  }
+  virtualCardAutoLockDate
+  virtualCardCardholder {
+    ...UserBase
+    __typename
+  }
+  virtualCardMerchantLockType
+  virtualCardSpendingLimits {
+    amountCents
+    interval
+    __typename
+  }
+  __typename
+}
+
+fragment UserBase on User {
+  id
+  deactivated
+  email
+  firstName
+  fullName
+  lastName
+  __typename
+}
+{
+  "id": "067a39c8-eeca-7273-8000-aae2109c7443",
+  "totalCents": 9999
+}

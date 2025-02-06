@@ -1,0 +1,524 @@
+{
+  "data": {
+    "updatePriceDetail": {
+      "priceDetail": {
+        "id": "067a39c8-eeca-7273-8000-aae2109c7443",
+        "guid": "067a39c8-eeca-7273-8000-aae2109c7443",
+        "attributes": [],
+        "contractLength": null,
+        "currency": "USD",
+        "endDate": null,
+        "executionDate": null,
+        "initialCurrency": "USD",
+        "initialEstimatedCents": 50100,
+        "insight": null,
+        "lineItems": [],
+        "note": null,
+        "paymentFrequency": null,
+        "paymentMethod": null,
+        "paymentTerms": null,
+        "poNumber": "66",
+        "remainingCents": null,
+        "renewalDate": null,
+        "renewalNoticeDate": null,
+        "savingStatus": null,
+        "startDate": null,
+        "status": null,
+        "taxIncludedType": null,
+        "totalCents": 9999,
+        "totalCentsByYear": null,
+        "transactionDate": null,
+        "__typename": "RequisitionPriceDetail",
+        "purchaseRequisition": {
+          "id": "067a39c8-1021-7252-8000-e241dfc30a46",
+          "approvalStatus": 1,
+          "attributesData": [
+            {
+              "id": null,
+              "attributeConfigId": null,
+              "attributeData": "\"Take home Challenge\"",
+              "attributeId": null,
+              "attributeName": "name",
+              "entityType": "request",
+              "questionOptions": null,
+              "questionPrompt": "What is the name of the product or service you are requesting?",
+              "questionSeen": false,
+              "questionType": 2,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": null,
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "description",
+              "entityType": "request",
+              "questionOptions": null,
+              "questionPrompt": "Please provide a brief description for this request",
+              "questionSeen": false,
+              "questionType": 2,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": null,
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "subsidiary",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "What subsidiary is this purchase for?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": null,
+              "attributeData": "\"3ce6c2f1-ac32-4614-9fe4-093472a44ee8\"",
+              "attributeId": null,
+              "attributeName": "purchase_category",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "df36645c-646d-4302-9df5-bd0697254b39",
+                  "name": "Software",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "afe31465-dd13-47aa-a3ec-b533f126646f",
+                  "name": "Hardware",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "4b487c43-6950-4a66-b2f0-a530384a304f",
+                  "name": "Training & Education",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "66100295-f565-4415-8a76-9ab30d7791f5",
+                  "name": "Consulting or Professional Services",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "37075049-0265-4e09-9d95-42dde47caa21",
+                  "name": "Office supplies",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "3ce6c2f1-ac32-4614-9fe4-093472a44ee8",
+                  "name": "Other",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "What are you looking to purchase?",
+              "questionSeen": true,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": null,
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "purchase_subcategory",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Please share more about what you are looking for!",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": null,
+              "attributeData": "\"a85d3ecb-f538-4af7-b930-734acc58a2b1\"",
+              "attributeId": null,
+              "attributeName": "department",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "3ec3a725-6dc9-4792-a25b-ff7a31ca4eab",
+                  "name": "Marketing",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "44435da4-3f6f-4dd7-a6e3-11ad323634f7",
+                  "name": "Services",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "a85d3ecb-f538-4af7-b930-734acc58a2b1",
+                  "name": "HR",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "34be5136-4f46-46c0-aa4b-af84e8e8ce0a",
+                  "name": "Sales",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "d9399d3d-ab36-49b9-9b3d-55571a97034d",
+                  "name": "Engg",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "8523ef6d-fd9e-493a-9a92-4b03ea65331c",
+                  "name": "Product",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "What department is this purchase for?",
+              "questionSeen": true,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "0678fefc-9bf2-723e-8000-b565c47be629",
+              "attributeData": null,
+              "attributeId": "067a39c8-0968-75d3-8000-14dbed374eab",
+              "attributeName": "Team",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "which team are you on?",
+              "questionSeen": true,
+              "questionType": 2,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "23f48b5a-8996-47fb-b92b-1a58a80b4a54",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "data_access",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "cb090624-6d8b-4f3a-a179-d01e37f4eac5",
+                  "name": "Yes",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "e0285f7e-9bbd-4b04-a956-7ba9f3e9275e",
+                  "name": "No",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "545b3af9-f91d-4445-992a-23ced8e6aa73",
+                  "name": "I don’t know",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "Will the vendor have access to any confidential company data or information?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "b862fc22-50ae-4d51-858b-3bf427be2edc",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "data_type",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "c2aed383-3e21-44b7-867d-4eb6b97bcf91",
+                  "name": "Confidential Business Information",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "4908d760-6791-4c0a-8a31-012dd52c4f1f",
+                  "name": "Company Financial Data",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "dd7b2179-39f4-4211-9130-2fef8f8478fa",
+                  "name": "Marketing Data",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "f64a3acf-df5e-4486-ab14-0090e59b1e28",
+                  "name": "Personal Information (customer or employee)",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "What type of data/information will be shared?",
+              "questionSeen": false,
+              "questionType": 1,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "b38fd1ea-9bfe-4224-ae73-561660837305",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "data_type_details",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Please describe the exact data types/information being shared:",
+              "questionSeen": false,
+              "questionType": 3,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "870a3671-401e-4e47-8d45-de785dcd1e2e",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "integrations",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "9dd6e5dd-f4fc-469e-833f-9241929d2d5e",
+                  "name": "Yes",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "6f20bd05-2294-4c7a-88ce-febe474d3271",
+                  "name": "No",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "Are any system integrations required?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "50ef55ad-930b-4511-9694-618949515bc8",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "integration_details",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Please describe the required integration(s):",
+              "questionSeen": false,
+              "questionType": 3,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "e46e951e-ad99-4ab5-92e5-b00f774a9e24",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "system_access",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "94b9ccb0-7233-4f14-9a49-7e3a62b0fbbe",
+                  "name": "Yes",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "d9533f2d-352b-4944-bf40-8f0e26d873d3",
+                  "name": "No",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "Does the vendor require access to any company systems?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "8d30d355-883b-4120-ae01-4e56536f303a",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "system_access_details",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Which systems and what level of access?",
+              "questionSeen": false,
+              "questionType": 3,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "4a32156c-0b12-42ea-96ba-ad74d147cf6a",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "equipment",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "7de67dca-96cc-4ed2-893a-df07ff51cb02",
+                  "name": "Their own",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "9dc3731f-7040-417e-bf96-7b3c62c91eb4",
+                  "name": "Company-issued",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "Will the vendor use their own equipment or require use of company-issued equipment?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "32f000ad-97c7-4aec-9f65-01fa777a4352",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "equipment_details",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Please provide the requirements for the company-issued equipment:",
+              "questionSeen": false,
+              "questionType": 3,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "eeb20fd3-ba2f-4721-bc36-6347f2cec6ce",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "physical_access",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "96bf94bf-6ea3-4462-a675-2f1e14b6d082",
+                  "name": "Yes",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "a9171e8f-860b-4c15-8d6b-abc46613b021",
+                  "name": "No",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "Is physical onsite access required?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "bd67e4b0-6f49-4d05-ac3d-4827c164902b",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "physical_access_details",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Please provide the requirements for physical onsite access:",
+              "questionSeen": false,
+              "questionType": 3,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "b7965f7e-29d9-4150-8c7b-3b2a2aeef5e4",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "shipping_address",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "What's the shipping address?",
+              "questionSeen": false,
+              "questionType": 9,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "77565832-f4f9-4520-9a85-b1dafa0c604d",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "estimated_purchase_price_cents",
+              "entityType": "request",
+              "questionOptions": [],
+              "questionPrompt": "Which store would you like to purchase from?",
+              "questionSeen": false,
+              "questionType": 123,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            },
+            {
+              "id": null,
+              "attributeConfigId": "c5cefe35-cd03-4c19-9052-1e32ef562477",
+              "attributeData": null,
+              "attributeId": null,
+              "attributeName": "existing_engagement",
+              "entityType": "request",
+              "questionOptions": [
+                {
+                  "key": "89f66c94-7615-4a91-8d50-8dc1963cdf27",
+                  "name": "Yes",
+                  "__typename": "CustomQuestionOption"
+                },
+                {
+                  "key": "689e7fdd-bdf2-450c-b6ea-3d3c9daadd45",
+                  "name": "No",
+                  "__typename": "CustomQuestionOption"
+                }
+              ],
+              "questionPrompt": "Do you want to use an existing engagement for this request?",
+              "questionSeen": false,
+              "questionType": 0,
+              "valueViewOnly": false,
+              "__typename": "AttributeData"
+            }
+          ],
+          "canEditPricingDetail": true,
+          "currency": "USD",
+          "department": {
+            "id": "a85d3ecb-f538-4af7-b930-734acc58a2b1",
+            "guid": "a85d3ecb-f538-4af7-b930-734acc58a2b1",
+            "erpIds": null,
+            "name": "HR",
+            "__typename": "Department"
+          },
+          "description": null,
+          "estimatedPurchasePrice": 99,
+          "estimatedPurchasePriceCents": 9999,
+          "estimatedPurchasePriceCentsUsd": 9999,
+          "glCode": null,
+          "itemAccount": null,
+          "location": null,
+          "name": "Take home Challenge",
+          "purchaseCategory": {
+            "id": "3ce6c2f1-ac32-4614-9fe4-093472a44ee8",
+            "name": "Other",
+            "__typename": "TaxonomyNode"
+          },
+          "purchaseSubcategory": null,
+          "requestNumber": 66,
+          "subsidiary": null,
+          "subsidiaryGuid": null,
+          "vendor": null,
+          "virtualCardAutoLockDate": null,
+          "virtualCardCardholder": null,
+          "virtualCardMerchantLockType": null,
+          "virtualCardSpendingLimits": null,
+          "__typename": "PurchaseRequisition",
+          "sourcingSavingsPromotionText": null
+        }
+      },
+      "workflowDiagramUpdated": true,
+      "__typename": "UpdatePriceDetail"
+    }
+  }
+}

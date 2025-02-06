@@ -1,0 +1,303 @@
+// Added an item to Price breakdown --> | Coffee | 1 | USD 99.00 | HR | null
+mutation UpdateLineItems(
+  $priceDetailId: String!
+  $taxConfiguration: Int
+  $lineItemsData: [JSONString]
+  $lineItems: [RequisitionPriceLineItemMutationParams]
+) {
+  updateRequisitionPriceLineItems(
+    priceDetailId: $priceDetailId
+    taxConfiguration: $taxConfiguration
+    lineItemsData: $lineItemsData
+    lineItems: $lineItems
+  ) {
+    errors {
+      id
+      key
+      message
+      __typename
+    }
+    priceDetail {
+      id
+      purchaseRequisition {
+        id
+        ...ContractDetailsPurchaseRequisition
+        sourcingSavingsPromotionText
+        __typename
+      }
+      ...RequestPriceDetail
+      taxConfiguration
+      __typename
+    }
+    workflowDiagramUpdated
+    __typename
+  }
+}
+
+fragment ContractDetailsPurchaseRequisition on PurchaseRequisition {
+  id
+  guid
+  approvalStatus
+  attributesData {
+    id
+    attributeConfigId
+    attributeData
+    attributeId
+    attributeName
+    entityType
+    questionOptions {
+      key
+      name
+      __typename
+    }
+    questionPrompt
+    questionSeen
+    questionType
+    valueViewOnly
+    __typename
+  }
+  canEditPricingDetail
+  currency
+  department {
+    id
+    guid
+    erpIds
+    name
+    __typename
+  }
+  description
+  estimatedPurchasePrice
+  itemAccount {
+    id
+    guid
+    name
+    __typename
+  }
+  location {
+    id
+    guid
+    name
+    __typename
+  }
+  name
+  purchaseCategory {
+    id
+    name
+    __typename
+  }
+  purchaseSubcategory {
+    id
+    name
+    __typename
+  }
+  requestNumber
+  subsidiary {
+    id
+    guid
+    displayName
+    erpIds
+    name
+    status
+    __typename
+  }
+  subsidiaryGuid
+  vendor {
+    id
+    subsidiaries {
+      id
+      guid
+      displayName
+      name
+      status
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment RequestPriceDetail on RequisitionPriceDetail {
+  id
+  guid
+  attributes {
+    ...PriceDetailAttribute
+    __typename
+  }
+  contractLength
+  currency
+  endDate
+  executionDate
+  initialCurrency
+  initialEstimatedCents
+  lineItems {
+    id
+    guid
+    accountFromLineType {
+      id
+      __typename
+    }
+    attributes {
+      ...LineItemAttribute
+      __typename
+    }
+    currency
+    defaultLineFieldInfo {
+      defaultLineFields {
+        ... on DropDownField {
+          disabledEditMode
+          editTooltip
+          enableEditModeWhenCopied
+          initialValue
+          isClearable
+          key
+          __typename
+        }
+        ... on NumberField {
+          disabledEditMode
+          editTooltip
+          enableEditModeWhenCopied
+          initialValueNumber
+          key
+          __typename
+        }
+        ... on TextField {
+          key
+          __typename
+        }
+        __typename
+      }
+      lineId
+      __typename
+    }
+    department {
+      id
+      guid
+      name
+      __typename
+    }
+    description
+    endDate
+    expenseCategory {
+      id
+      guid
+      glCode {
+        id
+        guid
+        name
+        __typename
+      }
+      name
+      __typename
+    }
+    glCode {
+      id
+      guid
+      name
+      __typename
+    }
+    gqlLineType
+    itemAccount {
+      id
+      guid
+      name
+      __typename
+    }
+    lineType
+    location {
+      id
+      guid
+      name
+      __typename
+    }
+    note
+    punchoutProductLink
+    quantity
+    quantityDecimal
+    quantityDecimalStr
+    rateCents
+    rateCentsRemaining
+    sku
+    startDate
+    taxAmountCents
+    taxCodes {
+      id
+      guid
+      __typename
+    }
+    totalCents
+    totalCentsUsd
+    __typename
+  }
+  note
+  paymentFrequency
+  paymentMethod
+  paymentTerms
+  poNumber
+  remainingCents
+  renewalDate
+  renewalNoticeDate
+  savingLineItems {
+    ...SavingLineItemBase
+    __typename
+  }
+  savingStatus
+  startDate
+  status
+  taxConfiguration
+  taxIncludedType
+  totalCents
+  totalCentsByYear
+  totalSavingsCents
+  transactionDate
+  __typename
+}
+
+fragment PriceDetailAttribute on EntityAttribute {
+  id
+  config {
+    id
+    attributeName
+    hideOnRequest
+    key
+    __typename
+  }
+  data
+  isSelectedOptionDeprecated
+  __typename
+}
+
+fragment LineItemAttribute on EntityAttribute {
+  id
+  config {
+    id
+    attributeName
+    key
+    __typename
+  }
+  data
+  isSelectedOptionDeprecated
+  __typename
+}
+
+fragment SavingLineItemBase on SavingLineItem {
+  id
+  description
+  endDate
+  formattedSavingAmount
+  frequencyType
+  savingCents
+  savingLineItemType {
+    id
+    name
+    __typename
+  }
+  startDate
+  type
+  __typename
+}
+{
+  "lineItemsData": [
+    "{\"attributeConfigIdToValue\":{},\"attributeNameToValue\":{},\"department\":{\"guid\":\"a85d3ecb-f538-4af7-b930-734acc58a2b1\"},\"priceDetailId\":\"067a39c8-eeca-7273-8000-aae2109c7443\",\"rateCents\":9900,\"totalCents\":9900,\"defaultLineFieldInfo\":{\"defaultLineFields\":[]},\"description\":\"Coffee\",\"rateCentsRemaining\":0,\"priceUpdateId\":\"06f01441-34cb-4b5c-b84c-8b736439be2f\"}"
+  ],
+  "priceDetailId": "067a39c8-eeca-7273-8000-aae2109c7443"
+}

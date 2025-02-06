@@ -1,0 +1,19 @@
+operationName: 
+
+* UpdateProcessNodeStatusMutation
+* RdpUserActivity
+* RequestAuditTrail 
+* UpdateProcessNodeStatusMutation
+* UpdateRequestAttributes
+* RdpAboveTheFold
+* RequestDetailsPage
+* RdpSectionedAttributes
+* PurchaseRequisitionAttributesData
+* FieldManagedLineItems
+* SubcategoriesForCategory
+* UpdateLineItems
+* NumUnseenNotifications
+* UserCompanyAuthInfo
+* CreateAuditReport
+* UpdatePriceDetailWorkflowContractDetailsSectionWithModal
+* UpdateRequestAgreementSettings

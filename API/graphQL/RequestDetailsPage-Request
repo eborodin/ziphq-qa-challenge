@@ -1,0 +1,1380 @@
+// Gathering all the data on the page
+
+query RequestDetailsPage($requestId: String!) {
+  purchaseRequisition(guid: $requestId) {
+    id
+    allBudgetsWithAmounts {
+      ...Budget
+      __typename
+    }
+    approvalStatus
+    buyerMailingAddress
+    canceledAt
+    cancelReason
+    canEditPricingDetail
+    chosenVendorContact {
+      id
+      __typename
+    }
+    companyHasActiveSourcingWorkflow
+    completedAt
+    contractForRequests {
+      id
+      agreementNumber
+      creator {
+        ...UserBase
+        __typename
+      }
+      currency
+      endDate
+      name
+      renewalDate
+      renewalNoticeDate
+      requests {
+        id
+        estimatedPurchasePriceCents
+        name
+        __typename
+      }
+      totalCents
+      vendor {
+        id
+        __typename
+      }
+      __typename
+    }
+    createdAt
+    creator {
+      ...UserBase
+      __typename
+    }
+    currency
+    currencyConversionEnabled
+    currentUserCanAddNodes
+    currentUserCanEditDiagram
+    currentUserCanLeaveComment
+    currentUserCanSendVendorPortal
+    currentUserIsFollower
+    currentUserIsOwner
+    cycleTimeDays
+    department {
+      id
+      guid
+      displayName
+      erpIds
+      name
+      __typename
+    }
+    derivedAgreementOutcome
+    description
+    displayVendorName
+    documentsData {
+      id
+      approver {
+        ...UserBase
+        __typename
+      }
+      assignee {
+        ...UserBase
+        __typename
+      }
+      assigneeCompanyName
+      assigneeType
+      attachment {
+        ...AttachmentFragment
+        __typename
+      }
+      isAdditional
+      resourceConfig {
+        id
+        attachmentType {
+          id
+          name
+          __typename
+        }
+        currentUserCanViewAttachment
+        isOptional
+        isVendorProfileTask
+        name
+        __typename
+      }
+      resourceResponse {
+        id
+        guid
+        task {
+          id
+          isOptional
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    engagement {
+      ...EngagementSearch
+      __typename
+    }
+    estimatedPurchasePrice
+    estimatedPurchasePriceCents
+    estimatedPurchasePriceCentsUsd
+    followers {
+      ...UserBase
+      __typename
+    }
+    glCode {
+      id
+      guid
+      name
+      __typename
+    }
+    hasShippingEnabled
+    initiatedAt
+    invitedFollowers {
+      ...UserBase
+      __typename
+    }
+    invoiceForDisbursement {
+      id
+      __typename
+    }
+    isApprover
+    isApproverOrQueueMember
+    isBudgetOwner
+    isRenewal
+    isRequester
+    itemAccount {
+      id
+      guid
+      name
+      __typename
+    }
+    location {
+      id
+      guid
+      name
+      __typename
+    }
+    medianRequestCycleTimeDays
+    myActionItems {
+      ...ActionItem
+      __typename
+    }
+    name
+    owner {
+      ...UserBase
+      __typename
+    }
+    paymentStatus
+    poChangeOrder {
+      id
+      changeReasonMessage
+      purchaseOrder {
+        id
+        canBeReceivedByCurrentUser
+        currency
+        department {
+          id
+          displayName
+          name
+          __typename
+        }
+        isRequester
+        isSentToVendor
+        poNumber
+        receivingStatus
+        subsidiary {
+          id
+          displayName
+          name
+          __typename
+        }
+        totalOpenAmountCents
+        __typename
+      }
+      __typename
+    }
+    poLink
+    predefinedShippingAddressQuestion {
+      id
+      allowCustomAddress
+      showPeoplePicker
+      __typename
+    }
+    preventLinkedAgreementPriceUpdate
+    priceDetail {
+      ...RequestPriceDetail
+      __typename
+    }
+    priority
+    privateNote {
+      id
+      body
+      __typename
+    }
+    productsForRequests {
+      id
+      customCategoriesForProducts {
+        id
+        name
+        taxonomyDisplayedSlugPath
+        taxonomyPath
+        taxonomySlugPath
+        __typename
+      }
+      description
+      name
+      __typename
+    }
+    punchoutOrder {
+      ...RequestDetailPunchoutOrder
+      __typename
+    }
+    purchaseCategory {
+      id
+      name
+      __typename
+    }
+    ...PurchaseRequisitionVirtualCard
+    purchaseSubcategory {
+      id
+      name
+      __typename
+    }
+    rejectedNode {
+      id
+      assigneeDisplayName
+      name
+      note
+      __typename
+    }
+    requestNumber
+    showCloneRequestButton
+    showScheduleRenewalSection
+    showVirtualCardSection
+    sourcingSavingsPromotionText
+    subsidiary {
+      id
+      guid
+      canIssueCards
+      displayName
+      erpIds
+      name
+      status
+      __typename
+    }
+    subsidiaryGuid
+    targetApprovalDate
+    type
+    validPaymentMethodTypesForPr
+    vendor {
+      id
+      name
+      poEmails
+      shouldAutoSendPo
+      shouldHidePoAmounts
+      status
+      subsidiaries {
+        id
+        canIssueCards
+        displayName
+        name
+        status
+        __typename
+      }
+      upcomingRenewals {
+        id
+        agreement {
+          id
+          endDate
+          __typename
+        }
+        displayRenewalStatus
+        name
+        nextReviewDate
+        __typename
+      }
+      ...VendorForMerchantLock
+      __typename
+    }
+    vendorPortalLastRemindedAt
+    vendorPortals {
+      id
+      isLocked
+      sentAt
+      state
+      __typename
+    }
+    vendorPortalState
+    visiblePurchaseOrder {
+      id
+      buyerMailingAddress
+      canBeReceivedByCurrentUser
+      currency
+      department {
+        id
+        displayName
+        name
+        __typename
+      }
+      isRequester
+      isSentToVendor
+      poNumber
+      receivingStatus
+      subsidiary {
+        id
+        displayName
+        name
+        __typename
+      }
+      totalOpenAmountCents
+      __typename
+    }
+    workflowConfig {
+      id
+      enableGuidedSourcing
+      hideWorkflowStatistics
+      name
+      renewalWorkflowConfig {
+        id
+        __typename
+      }
+      requestedInfoCollections {
+        id
+        assigneeType
+        intakeForm {
+          id
+          __typename
+        }
+        isPrimaryIntake
+        __typename
+      }
+      requestOwnerEnabled
+      sourcingAwardTemplate
+      sourcingRejectionTemplate
+      status
+      type
+      __typename
+    }
+    workflowPreventsAgreementCreation
+    __typename
+  }
+}
+
+fragment Budget on BudgetForDashboard {
+  id
+  amountActualCents
+  amountCents
+  amountCommittedCents
+  amountCommittedPercent
+  departmentId
+  departmentName
+  endDate
+  fullName
+  glCodeId
+  glCodeName
+  name
+  startDate
+  __typename
+}
+
+fragment UserBase on User {
+  id
+  deactivated
+  email
+  firstName
+  fullName
+  lastName
+  __typename
+}
+
+fragment AttachmentFragment on Attachment {
+  id
+  attachmentName
+  attachmentType {
+    id
+    guid
+    canonicalAttachmentType {
+      id
+      enumType
+      __typename
+    }
+    name
+    resourceCategory
+    __typename
+  }
+  attachmentVersions {
+    ...AttachmentVersionFragment
+    __typename
+  }
+  attributesData {
+    attribute {
+      id
+      guid
+      data
+      __typename
+    }
+    attributeConfig {
+      id
+      guid
+      attributeDisplayName
+      attributeName
+      customQuestion {
+        id
+        guid
+        customQuestionOptions {
+          id
+          guid
+          comment
+          key
+          name
+          __typename
+        }
+        name
+        prompt
+        questionType
+        __typename
+      }
+      entityType
+      status
+      __typename
+    }
+    attributeConfigId
+    attributeData
+    valueReadable
+    __typename
+  }
+  contractValue
+  currentUserCanViewAttachment
+  documentNumber
+  executionDate
+  executionStatus
+  expireDate
+  isDefault
+  parentAttachment {
+    id
+    guid
+    attachmentName
+    attachmentType {
+      id
+      name
+      __typename
+    }
+    primaryAttachmentVersion {
+      ...AttachmentVersionFragment
+      __typename
+    }
+    __typename
+  }
+  primaryAttachmentVersion {
+    ...AttachmentVersionFragment
+    isClonedFromVendor
+    __typename
+  }
+  renewalDate
+  status
+  taoCreator {
+    id
+    __typename
+  }
+  __typename
+}
+
+fragment AttachmentVersionFragment on AttachmentVersion {
+  id
+  comment
+  createdAt
+  creator {
+    companyAsUser {
+      id
+      name
+      __typename
+    }
+    ...UserBase
+    __typename
+  }
+  executionDate
+  expireDate
+  fileBucket
+  filename
+  fileSize
+  fileUrl
+  insightCount
+  keyName
+  name
+  renewalDate
+  status
+  task {
+    id
+    guid
+    integrationLink
+    integrationStatus
+    integrationStatusString
+    __typename
+  }
+  thumbnailUrl
+  uri
+  __typename
+}
+
+fragment EngagementSearch on Engagement {
+  id
+  attributes {
+    id
+    attributeName
+    config {
+      id
+      attributeNameReadable
+      customQuestion {
+        id
+        prompt
+        questionType
+        __typename
+      }
+      __typename
+    }
+    data
+    dataType
+    entityType
+    valueReadable
+    __typename
+  }
+  engagementName
+  engagementOwner
+  externalId
+  externalRequestIds
+  status
+  vendor {
+    id
+    name
+    __typename
+  }
+  vendorName
+  __typename
+}
+
+fragment ActionItem on ActionItem {
+  actionItemType
+  processNode {
+    ...RdpProcessNodeWithChildren
+    __typename
+  }
+  task {
+    processNode {
+      id
+      status
+      __typename
+    }
+    ...RdpTaskDetails
+    __typename
+  }
+  __typename
+}
+
+fragment RdpProcessNodeWithChildren on ProcessNode {
+  children {
+    ...RdpProcessNode
+    __typename
+  }
+  ...RdpProcessNode
+  __typename
+}
+
+fragment RdpProcessNode on ProcessNode {
+  id
+  activeTimeSec
+  assignedHierarchicalJobTitle {
+    id
+    name
+    __typename
+  }
+  assignedJobTitle {
+    id
+    name
+    __typename
+  }
+  assignedJobTitleDisplayName
+  assignedSubJobTitle {
+    id
+    name
+    __typename
+  }
+  assignee {
+    ...UserBase
+    __typename
+  }
+  assigneeDisplayName
+  billRejectionReason
+  canBeReassigned
+  canBeReassignedByCurrentUser
+  canBeSelfAssignedByCurrentUser
+  canSendReminder
+  canStart
+  completedAt
+  currentUserHasApprovalPermission
+  delegator {
+    ...UserBase
+    __typename
+  }
+  displayStatus
+  dueDate
+  isAutomaticallyTriggeredBySystem
+  isInReassignableStatus
+  name
+  nodeStatus {
+    id
+    __typename
+  }
+  nodeType
+  note
+  outNodes {
+    id
+    name
+    __typename
+  }
+  parent {
+    id
+    __typename
+  }
+  processConfig {
+    id
+    allowParallelAssignees
+    assignedEmail
+    instructions
+    isPaymentMethodApproval
+    name
+    type
+    workflowForOwnerAssignment {
+      id
+      __typename
+    }
+    __typename
+  }
+  reassignAllNodesOption {
+    shouldShow
+    summary
+    __typename
+  }
+  reassignNodeTasksOption {
+    shouldShow
+    summary
+    __typename
+  }
+  remindedAt
+  requiresManualScoring
+  resourceAndConfigs {
+    attachment {
+      id
+      attachmentVersions {
+        id
+        keyName
+        status
+        __typename
+      }
+      status
+      __typename
+    }
+    formResponse {
+      id
+      assignee {
+        id
+        __typename
+      }
+      status
+      __typename
+    }
+    resourceConfig {
+      id
+      attachmentType {
+        id
+        name
+        __typename
+      }
+      form {
+        id
+        name
+        __typename
+      }
+      templateTaskConfig {
+        id
+        name
+        taskType
+        __typename
+      }
+      type
+      __typename
+    }
+    resourceResponse {
+      id
+      task {
+        id
+        completedAt
+        status
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  scoringInstructions
+  slaHours
+  slaTimeUsedSec
+  stageForDueDateProcessNode {
+    id
+    dueDate
+    __typename
+  }
+  startDate
+  status
+  tasks {
+    ...RdpTaskDetails
+    __typename
+  }
+  totalPauseTime
+  __typename
+}
+
+fragment RdpTaskDetails on Task {
+  id
+  assignee {
+    ...UserBase
+    __typename
+  }
+  attachments {
+    ...AttachmentFragment
+    __typename
+  }
+  comments {
+    ...CompanyPostComment
+    __typename
+  }
+  completedAt
+  currentUserHasPermission
+  data
+  downloadLink
+  downloadName
+  externalLinks
+  integrationStatus
+  integrationStatusData
+  integrationStatusString
+  isAutomated
+  isOptional
+  isRequired
+  lastError {
+    id
+    message
+    title
+    __typename
+  }
+  latestIntegrationPlatformJob {
+    id
+    errorCode
+    errorMessage
+    recipe {
+      id
+      __typename
+    }
+    __typename
+  }
+  markNotNeededInfo
+  name
+  overrideRequiredToOptional
+  paymentInstrumentInterfaces {
+    id
+    status
+    vendor {
+      id
+      __typename
+    }
+    __typename
+  }
+  resourceResponse {
+    id
+    attachment {
+      ...AttachmentFragment
+      __typename
+    }
+    formResponse {
+      id
+      questionnaire {
+        id
+        name
+        __typename
+      }
+      status
+      __typename
+    }
+    resourceConfig {
+      id
+      attachmentType {
+        id
+        name
+        __typename
+      }
+      isOptional
+      name
+      __typename
+    }
+    __typename
+  }
+  savedIntegrationData
+  startTaskJob {
+    id
+    latestSnapshotWithException {
+      id
+      stepToExceptionMapping
+      __typename
+    }
+    __typename
+  }
+  status
+  taskConfig {
+    id
+    attachmentTypes {
+      id
+      __typename
+    }
+    config
+    integrationAppTask {
+      id
+      appTaskStartTaskRecipe {
+        id
+        appLogoPath
+        appName
+        startTaskRecipeIntegrationAppTask {
+          id
+          integrationDataPills {
+            id
+            dataType
+            displayName
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      prompt
+      __typename
+    }
+    integrationPlatformRecipe {
+      id
+      latestPublishedVersion {
+        id
+        mainUserConnector {
+          id
+          displayName
+          iconUrl
+          __typename
+        }
+        triggerStep {
+          id
+          inputConfig
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    integrationTaskConfig {
+      id
+      bodyMapping
+      fields
+      integrationLink
+      __typename
+    }
+    name
+    questionnaire {
+      id
+      name
+      requestedInfoCollectionForIntakeForm {
+        id
+        name
+        __typename
+      }
+      __typename
+    }
+    required
+    taskType
+    __typename
+  }
+  ...TaskWithExternalCheckResults
+  __typename
+}
+
+fragment CompanyPostComment on CompanyPostComment {
+  id
+  attachments {
+    ...AttachmentFragment
+    __typename
+  }
+  commenter {
+    profilePic {
+      id
+      uri
+      __typename
+    }
+    ...UserBase
+    __typename
+  }
+  commentResponses {
+    id
+    attachments {
+      ...AttachmentFragment
+      __typename
+    }
+    commenter {
+      profilePic {
+        id
+        uri
+        __typename
+      }
+      ...UserBase
+      __typename
+    }
+    commentParent {
+      id
+      __typename
+    }
+    createdAt
+    deleted
+    reactions {
+      id
+      taoCreator {
+        id
+        fullName
+        __typename
+      }
+      unicode
+      __typename
+    }
+    text
+    __typename
+  }
+  createdAt
+  deleted
+  modified
+  reactions {
+    id
+    taoCreator {
+      id
+      fullName
+      __typename
+    }
+    unicode
+    __typename
+  }
+  text
+  title
+  type
+  __typename
+}
+
+fragment TaskWithExternalCheckResults on Task {
+  id
+  externalCheckResults {
+    ...ExternalCheckResult
+    __typename
+  }
+  integrationStatus
+  integrationStatusData
+  integrationStatusString
+  __typename
+}
+
+fragment ExternalCheckResult on ExternalCheckResult {
+  id
+  displayData {
+    columnConfigs {
+      name
+      __typename
+    }
+    data
+    displayType
+    __typename
+  }
+  extendedDisplayData {
+    ... on TincheckData {
+      ...ExtendedTincheckData
+      __typename
+    }
+    ... on VendorDnbData {
+      vendorData {
+        ...DnbOrganizationFragment
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+  externalCheckType
+  lastFetched
+  resourceCategory
+  status
+  vendor {
+    id
+    name
+    taxIdNumber
+    __typename
+  }
+  __typename
+}
+
+fragment ExtendedTincheckData on TincheckData {
+  addressDetails
+  addressStatus
+  dmfDetails
+  dmfStatus
+  einDetails
+  einStatus
+  listsMatchChecks {
+    details
+    key
+    status
+    __typename
+  }
+  listsMatchDetails
+  listsMatchStatus
+  overallStatus
+  tinNameDetails
+  tinNameStatus
+  tinQueried
+  __typename
+}
+
+fragment DnbOrganizationFragment on DnbOrganization {
+  activities
+  certifiedSmallBusiness
+  corporateLinkage
+  disabledOwned
+  duns
+  entityType
+  establishedDate
+  evaluationRiskScore
+  fax
+  industryCodes
+  mailingAddress {
+    ...AddressFragment
+    __typename
+  }
+  mailUndeliverable
+  matchQualityInfo {
+    confidenceCode
+    matchGrade
+    matchGradeComponents {
+      componentRating
+      componentType
+      __typename
+    }
+    nameMatchScore
+    __typename
+  }
+  minorityOwned
+  mostSeniorPrinciples
+  numEmployees
+  operatingStatus
+  operatingStatusString
+  orgSizeCategory
+  paydexScore
+  primaryAddress {
+    ...AddressFragment
+    __typename
+  }
+  primaryName
+  publicTraded
+  registrationNumbers {
+    registrationNumber
+    type
+    __typename
+  }
+  stabilityIndexScore
+  standardRating
+  stockTickerNames
+  telephones
+  tradeStyleNames
+  veteranOwned
+  websiteAddresses
+  womenOwned
+  __typename
+}
+
+fragment AddressFragment on AddressObject {
+  addressTypes
+  countryCode
+  countryName
+  line1
+  line2
+  line3
+  line4
+  locality
+  postcode
+  region
+  regionAbbreviated
+  __typename
+}
+
+fragment RequestPriceDetail on RequisitionPriceDetail {
+  id
+  guid
+  attributes {
+    ...PriceDetailAttribute
+    __typename
+  }
+  contractLength
+  currency
+  endDate
+  executionDate
+  initialCurrency
+  initialEstimatedCents
+  lineItems {
+    id
+    guid
+    accountFromLineType {
+      id
+      __typename
+    }
+    attributes {
+      ...LineItemAttribute
+      __typename
+    }
+    currency
+    defaultLineFieldInfo {
+      defaultLineFields {
+        ... on DropDownField {
+          disabledEditMode
+          editTooltip
+          enableEditModeWhenCopied
+          initialValue
+          isClearable
+          key
+          __typename
+        }
+        ... on NumberField {
+          disabledEditMode
+          editTooltip
+          enableEditModeWhenCopied
+          initialValueNumber
+          key
+          __typename
+        }
+        ... on TextField {
+          key
+          __typename
+        }
+        __typename
+      }
+      lineId
+      __typename
+    }
+    department {
+      id
+      guid
+      name
+      __typename
+    }
+    description
+    endDate
+    expenseCategory {
+      id
+      guid
+      glCode {
+        id
+        guid
+        name
+        __typename
+      }
+      name
+      __typename
+    }
+    glCode {
+      id
+      guid
+      name
+      __typename
+    }
+    gqlLineType
+    itemAccount {
+      id
+      guid
+      name
+      __typename
+    }
+    lineType
+    location {
+      id
+      guid
+      name
+      __typename
+    }
+    note
+    punchoutProductLink
+    quantity
+    quantityDecimal
+    quantityDecimalStr
+    rateCents
+    rateCentsRemaining
+    sku
+    startDate
+    taxAmountCents
+    taxCodes {
+      id
+      guid
+      __typename
+    }
+    totalCents
+    totalCentsUsd
+    __typename
+  }
+  note
+  paymentFrequency
+  paymentMethod
+  paymentTerms
+  poNumber
+  remainingCents
+  renewalDate
+  renewalNoticeDate
+  savingLineItems {
+    ...SavingLineItemBase
+    __typename
+  }
+  savingStatus
+  startDate
+  status
+  taxConfiguration
+  taxIncludedType
+  totalCents
+  totalCentsByYear
+  totalSavingsCents
+  transactionDate
+  __typename
+}
+
+fragment PriceDetailAttribute on EntityAttribute {
+  id
+  config {
+    id
+    attributeName
+    hideOnRequest
+    key
+    __typename
+  }
+  data
+  isSelectedOptionDeprecated
+  __typename
+}
+
+fragment LineItemAttribute on EntityAttribute {
+  id
+  config {
+    id
+    attributeName
+    key
+    __typename
+  }
+  data
+  isSelectedOptionDeprecated
+  __typename
+}
+
+fragment SavingLineItemBase on SavingLineItem {
+  id
+  description
+  endDate
+  formattedSavingAmount
+  frequencyType
+  savingCents
+  savingLineItemType {
+    id
+    name
+    __typename
+  }
+  startDate
+  type
+  __typename
+}
+
+fragment RequestDetailPunchoutOrder on PunchoutOrder {
+  id
+  displayStatus
+  hasShippingInfo
+  punchoutConfig {
+    id
+    ocEnabled
+    punchoutSupplier
+    __typename
+  }
+  status
+  __typename
+}
+
+fragment PurchaseRequisitionVirtualCard on PurchaseRequisition {
+  virtualCard {
+    id
+    autoLockDate
+    billingAddress {
+      city
+      country
+      line1
+      line2
+      postalCode
+      state
+      __typename
+    }
+    canViewCardNumber
+    cardholderName
+    currency
+    expMonth
+    expYear
+    merchantLockType
+    spendingLimits {
+      amountCents
+      currentIntervalSpentAmountCents
+      interval
+      __typename
+    }
+    status
+    stripeAccountId
+    stripeVirtualCardId
+    transactionTotalAmountCents
+    __typename
+  }
+  virtualCardAutoLockDate
+  virtualCardCardholder {
+    ...UserBase
+    __typename
+  }
+  virtualCardMerchantLockType
+  virtualCardSpendingLimits {
+    amountCents
+    interval
+    __typename
+  }
+  __typename
+}
+
+fragment VendorForMerchantLock on Vendor {
+  id
+  canonicalVendor {
+    id
+    legalName
+    merchantLock {
+      id
+      merchantLockEnabled
+      __typename
+    }
+    name
+    publicIconUri
+    __typename
+  }
+  name
+  ...VendorWithImage
+  __typename
+}
+
+fragment VendorWithImage on Vendor {
+  id
+  iconPicUri
+  status
+  __typename
+}
+{
+  "requestId": "067a39c8-1021-7252-8000-e241dfc30a46"
+}

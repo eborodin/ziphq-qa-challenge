@@ -61,6 +61,14 @@ test('Navigate to Login Page', async ({ page }) => {
     // console.log(isVisible ? 'Take home Challenge is visible' : 'Take home Challenge is NOT present');
     // Verify that "Take home Challenge" header is visible
 
+
+
+    //price > 100 USD -> triggers budget approval - Verify Budget approval is triggered
+
+    //price > 500 USD ->  triggers manager approval
+
+
+
     // Verify the pirce update 
 
     const currentPirce = await updatedPriceCheck.textContent();
