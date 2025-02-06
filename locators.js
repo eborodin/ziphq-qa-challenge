@@ -10,11 +10,18 @@ export const PageLocators = {
     statusDropDownLegal: '//span[contains(text(), "Legal Approval")]/../../../div[@class= "MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-190lo7w"]',
     statusDropDownDepartment: '//span[contains(text(), "Department Approval")]/../../../div[@class= "MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-190lo7w"]',
     statusDropDownManager: '//span[contains(text(), "Manager Approval")]/../../../div[@class= "MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-190lo7w"]',
-    nodeManagerApproval: '//span[contains(text(), "Manager Approval")]',
-    nodeLegalApproval: '//span[contains(text(), "Legal Approval")]',
-    nodeBudgetApproval: '//span[contains(text(), "Budget Approval")]',
-    nodeDepartmentApproval: '//span[contains(text(), "Department Approval")]',
-    //span[contains(text(), "Department Approval")]
+    // nodeManagerApproval: '//span[contains(text(), "Manager Approval")]',
+    // nodeLegalApproval: '//span[contains(text(), "Legal Approval")]',
+    // nodeBudgetApproval: '//span[contains(text(), "Budget Approval")]',
+    // nodeDepartmentApproval: '//span[contains(text(), "Department Approval")]',
     statusSetInProgress: '//div[contains(text(), "In progress:)]',
-    statusCheckInProgress: '//span[contains(text(), "Manager Approval")]/../../../div//div[contains(text(), "In progress")]'
+    statusCheckInProgress: '//span[contains(text(), "Manager Approval")]/../../../div//div[contains(text(), "In progress")]',
+    UpdaedPriceHoover: '//div[contains(text(), "Updated price")]/../..',
+    updatedPriceClickPen: '//div[contains(text(), "Updated price")]/../../div[@id="editable-state"]//button[@class="clickable-reset e3fs9l5 f13priqs infkgbp"]',
+    inputUpdatedPrice: '//label[contains(text(), "Updated price")]/..//div/input',
+    clickSaveButton: 'span:has-text("Save")',
+    clickSaveChanges: 'span:has-text("Save changes")',
+    //div[@class="cd8pwiq cmpi8br"]/div/div[@class="f2qjx8s g1nt79xs"]/button/span[contains(text(), "Save")]
+    updatePriceChangeHeader: 'h3.t11vrf9q.w1g6n6hq.s7avxrs.t1sk5cdy.cyr962.e18p30ex.w1oidi01',
+    updatedPriceCheck: '//div[contains(text(), "Updated price")]/../../div/div/div[@class="t11vrf9q w1g6n6hq s1hfe04e sienn4l cyr962"]',
 };
