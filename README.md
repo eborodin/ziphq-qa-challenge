@@ -7,9 +7,9 @@ Login: http://qa.ziphq.com/
 Username: `enborodin+qatesting@gmail.com`
 Password: --> 
 
-Dashboard #64: https://qa.ziphq.com/request/067a2567-a48c-72a0-8000-1276ee4224d9 
-Dashboard #65: https://qa.ziphq.com/request/067914a4-5d28-76f4-8000-2214f35c434c
-Dashboard #66: https://qa.ziphq.com/request/067a39c8-1021-7252-8000-e241dfc30a46
+* Dashboard #64: https://qa.ziphq.com/request/067a2567-a48c-72a0-8000-1276ee4224d9 
+* Dashboard #65: https://qa.ziphq.com/request/067914a4-5d28-76f4-8000-2214f35c434c
+* Dashboard #66: https://qa.ziphq.com/request/067a39c8-1021-7252-8000-e241dfc30a46
 
 
 Test Stratage for the Challange 
