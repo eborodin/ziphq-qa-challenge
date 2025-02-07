@@ -29,8 +29,14 @@ test('Navigate to Login Page', async ({ page }) => {
     const labelLegalApproval = page.locator(PageLocators.labelLegalApproval);
     const labelBudgetApproval = page.locator(PageLocators.labelBudgetApproval);
     const labelManagerApproval = page.locator(PageLocators.labelManagerApproval);
-    const buttonDepartmentApproval = page.locator(PageLocators.buttonDepartmentApproval);
+    const buttonLegalApproval = page.locator(PageLocators.buttonLegalApproval);
+    const buttonManagerApproval = page.locator(PageLocators.buttonManagerApproval);
+    const buttonBudgetApproval = page.locator(PageLocators.buttonBudgetApproval);
     const checkLegalApprovalVerified = page.locator(PageLocators.checkLegalApprovalVerified);
+    const checkBudgetApprovalVerified = page.locator(PageLocators.checkBudgetApprovalVerified);
+    const checkManagerApprovalVerified = page.locator(PageLocators.checkManagerApprovalVerified);
+    const clickSummary = page.locator(PageLocators.clickSummary);
+
     // Price Validation Values
     const inputPriceValue = "500.01";
     const expectedPrice = "500.00";
@@ -70,13 +76,13 @@ test('Navigate to Login Page', async ({ page }) => {
 
     // Current price > 100 USD but < 500 -> triggers budget approval - Verify Budget approval is triggered
     if (displayedPrice > inputPriceOne && displayedPrice < expectedPrice) {
-        console.log("You need Budget & Legal Approvals", displayedPrice);
+        console.log("You need Budget & Legal Approvals");
         await expect(labelLegalApproval).toBeVisible();
         await expect(labelBudgetApproval).toBeVisible();
 
         // Current price > 500 USD -> triggers Managers approval. Check if Budget approval is triggered.
     } else if (displayedPrice > expectedPrice) {
-        console.log("You need the Manager Approval", displayedPrice);
+        console.log("You need the Manager Approval");
         await expect(labelManagerApproval).toBeVisible(); // check for Manager label
         // await expect(labelBudgetApproval).toBeVisible(); // check for Budget label
         // await expect(labelLegalApproval).toBeVisible(); // check for Legal label
@@ -91,7 +97,6 @@ test('Navigate to Login Page', async ({ page }) => {
         console.log("Price is already correct:", inputPriceValue);
     } else {
         console.log("Price is not correct and needs to be updated");
-
         await page.waitForTimeout(1000)
         await UpdaedPriceHoover.hover();
         await updatedPriceClickPen.click();
@@ -107,16 +112,41 @@ test('Navigate to Login Page', async ({ page }) => {
         await expect(updatedPriceCheck).toContainText(inputPriceValue);
     }
 
-    // **Verify the Approval of Legal task **
-    if (await buttonDepartmentApproval.isVisible()) {
-        await buttonDepartmentApproval.hover();
-        await buttonDepartmentApproval.click();
+    // ** Verify the Approval of Legal task **
+    if (await buttonLegalApproval.isVisible()) {
+        await buttonLegalApproval.hover();
+        await buttonLegalApproval.click();
         console.log("Congratulations! Your first Zip Request has been successfully approved!")
     } else {
         console.log("Legal Approval has been processed successfully.")
     }
     await labelLegalApproval.click();
     await checkLegalApprovalVerified.isVisible();
+    await clickSummary.click();
+
+    // ** Verify the Approval of Manager task **
+    if (await buttonManagerApproval.isVisible()) {
+        await buttonManagerApproval.hover();
+        await buttonManagerApproval.click();
+        console.log("Congratulations! Your Manager Request has been successfully approved!")
+    } else {
+        console.log("Legal Approval has been processed successfully.")
+    }
+    await labelManagerApproval.click();
+    await checkManagerApprovalVerified.isVisible()
+    await clickSummary.click();
+
+    // ** Verify the Approval of Budget task **
+    if (await buttonBudgetApproval.isVisible()) {
+        await buttonBudgetApproval.hover();
+        await buttonBudgetApproval.click();
+        console.log("Congratulations! Your Budget Request has been successfully approved!")
+    } else {
+        console.log("Legal Approval has been processed successfully.")
+        await labelBudgetApproval.click();
+        await checkBudgetApprovalVerified.isVisible()
+        await clickSummary.click();
+    }
 
     await page.waitForTimeout(10000);
 });
