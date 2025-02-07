@@ -19,7 +19,7 @@ test('Navigate to Login Page', async ({ page }) => {
     const forgotTextPW = page.locator(PageLocators.forgotTextPW);
     const passwordField = page.locator(PageLocators.passwordField);
     const loginButton = page.locator(PageLocators.loginButton);
-    const UpdaedPriceHoover = page.locator(PageLocators.UpdaedPriceHoover);
+    const updaedPriceHoover = page.locator(PageLocators.updaedPriceHoover);
     const updatedPriceClickPen = page.locator(PageLocators.updatedPriceClickPen);
     const inputUpdatedPrice = page.locator(PageLocators.inputUpdatedPrice);
     const clickSaveButton = page.locator(PageLocators.clickSaveButton);
@@ -99,7 +99,7 @@ test('Navigate to Login Page', async ({ page }) => {
     } else {
         console.log("Price is not correct and needs to be updated");
         await page.waitForTimeout(1000)
-        await UpdaedPriceHoover.hover();
+        await updaedPriceHoover.hover();
         await updatedPriceClickPen.click();
         await inputUpdatedPrice.fill(inputPriceValue);
         await clickSaveButton.click();

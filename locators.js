@@ -23,7 +23,7 @@ export const PageLocators = {
     clickXmark: '//button[@class="clickable-reset w1nrnyah f13priqs infkgbp"]',
     statusSetInProgress: '//div[contains(text(), "In progress:)]',
     statusCheckInProgress: '//span[contains(text(), "Manager Approval")]/../../../div//div[contains(text(), "In progress")]',
-    UpdaedPriceHoover: '//div[contains(text(), "Updated price")]/../../div[@class="cmhls1"]',
+    updaedPriceHoover: '//div[contains(text(), "Updated price")]/../../div[@class="cmhls1"]',
     updatedPriceClickPen: '//div[contains(text(), "Updated price")]/../../div[@id="editable-state"]//button[@class="clickable-reset e3fs9l5 f13priqs infkgbp"]',
     inputUpdatedPrice: '//label[contains(text(), "Updated price")]/..//div/input',
     clickSaveButton: 'span:has-text("Save")',
