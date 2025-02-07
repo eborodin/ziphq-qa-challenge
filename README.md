@@ -21,4 +21,6 @@ https://docs.google.com/document/d/1NQGrY7X3i9gAgZddQnxnxK-psI9c1LW9qNJpdFoapgs/
 
 <br>
 To run the test script 
+<br>
+
 `npx playwright test myTest.spec.js --project=chromium --headed`
