@@ -37,13 +37,10 @@ test('Navigate to Login Page', async ({ page }) => {
     const inputPriceOne = "100.00";
     const inputPriceTwo = "450";
     const inputPriceThree = "99.99";
-    // const enablePriceUpdate = true;
 
     await emailField.click();
     await emailField.fill(LoginCredentials.email);
     await emailNextButton.click();
-    // await page.waitForTimeout(3000);
-    // await expect(page).toHaveURL(pageURLs.loginPage)
     await expect(forgotTextPW).toBeVisible();
 
     // console.log(forgotTextPW ? 'Forgot Password is visible' : 'Forgot Password is NOT present');
@@ -67,7 +64,7 @@ test('Navigate to Login Page', async ({ page }) => {
     // const displayedPrice = await updatedPriceCheck.textContent();
     // console.log('Retrieved price:', displayedPrice.trim());
 
-    // Verify the Conditions of triggering the approval
+    // ** Verify Approval Triggering Rules **
     const displayedPrice = parseFloat(await updatedPriceCheck.textContent().then(text => text.replace(/[^0-9.]/g, '')));
     console.log("Retrieved numeric price:", displayedPrice);
 
@@ -90,8 +87,7 @@ test('Navigate to Login Page', async ({ page }) => {
     await expect(labelLegalApproval).toBeVisible();
     await page.waitForTimeout(1000);
 
-    // Verify the price cange to 500.01 -> triggers manager approval
-
+    // ** Confirm Price Update to 500.01 and Manager Approval Trigger **
     if (displayedPrice === inputPriceValue) {
         console.log("Price is already correct:", inputPriceValue);
     } else {
@@ -110,19 +106,18 @@ test('Navigate to Login Page', async ({ page }) => {
             console.log("No need to save changes. Procced to the next step.");
         }
         await expect(updatedPriceCheck).toContainText(inputPriceValue);
-
-        // Verify the Approval of Legal task
-
-        if (await buttonDepartmentApproval.isVisible()) {
-            await buttonDepartmentApproval.hover();
-            await buttonDepartmentApproval.click();
-            console.log("Congratulations! Your first Zip Request has been successfully approved!")
-        } else {
-            console.log("Legal Approval has been processed successfully.")
-        }
-        await labelLegalApproval.click();
-        await checkLegalApprovalVerified.isVisible();
     }
+
+    // **Verify the Approval of Legal task **
+    if (await buttonDepartmentApproval.isVisible()) {
+        await buttonDepartmentApproval.hover();
+        await buttonDepartmentApproval.click();
+        console.log("Congratulations! Your first Zip Request has been successfully approved!")
+    } else {
+        console.log("Legal Approval has been processed successfully.")
+    }
+    await labelLegalApproval.click();
+    await checkLegalApprovalVerified.isVisible();
 
     await page.waitForTimeout(10000);
 });
