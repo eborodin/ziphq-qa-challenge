@@ -5,15 +5,10 @@ import { pageURLs } from '../config.js'
 import { navigateAndWait } from '../helpers.js';
 test.use({ browserName: 'chromium' });
 
-// for (let i = 0; i < 1; i++) {  // Run the test 5 times
-//     test(`Login loop ${i + 1}`, async ({ page }) => {
-//         await page.goto(pageURLs.loginPage);
-
 // Login -- wait - check for Sign in to Zip
 test('Navigate to Login Page', async ({ page }) => {
     await navigateAndWait(page, pageURLs.loginPage, 3000);  // Use stored URL
     await expect(page).toHaveURL(pageURLs.loginPage);
-
     await expect(page.locator(PageLocators.zipLogoText)).toBeVisible();
     // const signInZip = page.locator('text="Sign in to Zip"', { timeout: 5000 });
     // const isTextVisible = await signInZip.isVisible();
@@ -31,7 +26,18 @@ test('Navigate to Login Page', async ({ page }) => {
     const updatePriceChangeHeader = page.locator(PageLocators.updatePriceChangeHeader);
     const updatedPriceCheck = page.locator(PageLocators.updatedPriceCheck);
     const clickSaveChanges = page.locator(PageLocators.clickSaveChanges);
-    const priceUpdateOne = "999.00";
+    const labelLegalApproval = page.locator(PageLocators.labelLegalApproval);
+    const labelBudgetApproval = page.locator(PageLocators.labelBudgetApproval);
+    const labelManagerApproval = page.locator(PageLocators.labelManagerApproval);
+    const buttonDepartmentApproval = page.locator(PageLocators.buttonDepartmentApproval);
+    const checkLegalApprovalVerified = page.locator(PageLocators.checkLegalApprovalVerified);
+    // Price Validation Values
+    const inputPriceValue = "500.01";
+    const expectedPrice = "500.00";
+    const inputPriceOne = "100.00";
+    const inputPriceTwo = "450";
+    const inputPriceThree = "99.99";
+    // const enablePriceUpdate = true;
 
     await emailField.click();
     await emailField.fill(LoginCredentials.email);
@@ -52,38 +58,49 @@ test('Navigate to Login Page', async ({ page }) => {
     // console.log(isForgotPWText ? "Text is visible!" : "Text is NOT visible!");
 
     // Get to the Dashboard 
-    //await page.goto(pageURLs.dashboard);
-    await navigateAndWait(page, pageURLs.dashboard, 3000)
-    await expect(page).toHaveURL(pageURLs.dashboard);
+    const url = `${pageURLs.requestUrl}${pageURLs.requestId}`;
+    console.log("Navigating to QA Challenge Dashboard", url);
+    await page.goto(url);
+    await navigateAndWait(page, url, 3000)
+    await expect(page).toHaveURL(url);
 
-    // await expect(page.locator(PageLocators.challangeHeader)).toBeVisible();
-    // const isVisible = await page.locator(PageLocators.challangeHeader).isVisible()
-    // console.log(isVisible ? 'Take home Challenge is visible' : 'Take home Challenge is NOT present');
-    // Verify that "Take home Challenge" header is visible
+    // const displayedPrice = await updatedPriceCheck.textContent();
+    // console.log('Retrieved price:', displayedPrice.trim());
 
+    // Verify the Conditions of triggering the approval
+    const displayedPrice = parseFloat(await updatedPriceCheck.textContent().then(text => text.replace(/[^0-9.]/g, '')));
+    console.log("Retrieved numeric price:", displayedPrice);
 
+    //Current price > 100 USD but < 500 -> triggers budget approval - Verify Budget approval is triggered
+    if (displayedPrice > inputPriceOne && displayedPrice < expectedPrice) {
+        console.log("You need Budget & Legal Approvals", displayedPrice);
+        await expect(labelLegalApproval).toBeVisible();
+        await expect(labelBudgetApproval).toBeVisible();
 
-    //price > 100 USD -> triggers budget approval - Verify Budget approval is triggered
+        //Current price > 500 USD -> triggers Managers approval. Check if Budget approval is triggered.
+    } else if (displayedPrice > expectedPrice) {
+        console.log("You need the Manager Approval", displayedPrice);
+        await expect(labelManagerApproval).toBeVisible();
+        // await expect(labelBudgetApproval).toBeVisible();
+        // await expect(labelLegalApproval).toBeVisible();
 
-    //price > 500 USD ->  triggers manager approval
+    } else {
+        console.log("You are all set, need only Legal Approval")
+    }
+    await expect(labelLegalApproval).toBeVisible();
+    await page.waitForTimeout(1000);
 
+    // Verify the price cange to 500.01 -> triggers manager approval
 
-
-    // Verify the pirce update 
-
-    const currentPirce = await updatedPriceCheck.textContent();
-    console.log('Retrieved Updated price:', currentPirce.trim());
-
-    if (currentPirce === priceUpdateOne) {
-        console.log("Price is already correct:", priceUpdateOne);
+    if (displayedPrice === inputPriceValue) {
+        console.log("Price is already correct:", inputPriceValue);
     } else {
         console.log("Price is not correct and needs to be updated");
 
         await page.waitForTimeout(1000)
         await UpdaedPriceHoover.hover();
-        await page.waitForTimeout(3000)
         await updatedPriceClickPen.click();
-        await inputUpdatedPrice.fill(priceUpdateOne);
+        await inputUpdatedPrice.fill(inputPriceValue);
         await clickSaveButton.click();
 
         if (await (updatePriceChangeHeader).isVisible()) {
@@ -92,8 +109,20 @@ test('Navigate to Login Page', async ({ page }) => {
         } else {
             console.log("No need to save changes. Procced to the next step.");
         }
+        await expect(updatedPriceCheck).toContainText(inputPriceValue);
 
-        await expect(updatedPriceCheck).toContainText(priceUpdateOne);
-        await page.waitForTimeout(10000)
+        // Verify the Approval of Legal task
+
+        if (await buttonDepartmentApproval.isVisible()) {
+            await buttonDepartmentApproval.hover();
+            await buttonDepartmentApproval.click();
+            console.log("Congratulations! Your first Zip Request has been successfully approved!")
+        } else {
+            console.log("Legal Approval has been processed successfully.")
+        }
+        await labelLegalApproval.click();
+        await checkLegalApprovalVerified.isVisible();
     }
+
+    await page.waitForTimeout(10000);
 });
