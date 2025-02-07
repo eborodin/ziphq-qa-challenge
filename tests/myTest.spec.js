@@ -5,7 +5,7 @@ import { pageURLs } from '../config.js'
 import { navigateAndWait } from '../helpers.js';
 test.use({ browserName: 'chromium' });
 
-// Login -- wait - check for Sign in to Zip
+// ** Login -- wait - check for Sign in to Zip **
 test('Navigate to Login Page', async ({ page }) => {
     await navigateAndWait(page, pageURLs.loginPage, 3000);  // Use stored URL
     await expect(page).toHaveURL(pageURLs.loginPage);
@@ -35,7 +35,8 @@ test('Navigate to Login Page', async ({ page }) => {
     const checkLegalApprovalVerified = page.locator(PageLocators.checkLegalApprovalVerified);
     const checkBudgetApprovalVerified = page.locator(PageLocators.checkBudgetApprovalVerified);
     const checkManagerApprovalVerified = page.locator(PageLocators.checkManagerApprovalVerified);
-    const clickSummary = page.locator(PageLocators.clickSummary);
+    const clickXmark = page.locator(PageLocators.clickXmark);
+    const clickApprove = page.locator(PageLocators.clickXclickApprovemark);
 
     // Price Validation Values
     const inputPriceValue = "500.01";
@@ -90,9 +91,9 @@ test('Navigate to Login Page', async ({ page }) => {
         console.log("You are all set, need only Legal Approval")
     }
     await expect(labelLegalApproval).toBeVisible();
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(3000);
 
-    // ** Confirm Price Update to 500.01 and Manager Approval Trigger **
+    // // ** Confirm Price Update to 500.01 and Manager Approval Trigger **
     if (displayedPrice === inputPriceValue) {
         console.log("Price is already correct:", inputPriceValue);
     } else {
@@ -112,7 +113,7 @@ test('Navigate to Login Page', async ({ page }) => {
         await expect(updatedPriceCheck).toContainText(inputPriceValue);
     }
 
-    // ** Verify the Approval of Legal task **
+    // // ** Verify the Approval of Legal task **
     if (await buttonLegalApproval.isVisible()) {
         await buttonLegalApproval.hover();
         await buttonLegalApproval.click();
@@ -121,10 +122,12 @@ test('Navigate to Login Page', async ({ page }) => {
         console.log("Legal Approval has been processed successfully.")
     }
     await labelLegalApproval.click();
+    await page.waitForTimeout(3000)
     await checkLegalApprovalVerified.isVisible();
-    await clickSummary.click();
+    await clickXmark.click();
+    await page.waitForTimeout(3000)
 
-    // ** Verify the Approval of Manager task **
+    // // ** Verify the Approval of Manager task **
     if (await buttonManagerApproval.isVisible()) {
         await buttonManagerApproval.hover();
         await buttonManagerApproval.click();
@@ -139,14 +142,17 @@ test('Navigate to Login Page', async ({ page }) => {
     // ** Verify the Approval of Budget task **
     if (await buttonBudgetApproval.isVisible()) {
         await buttonBudgetApproval.hover();
+        await page.waitForTimeout(3000)
         await buttonBudgetApproval.click();
+        // await clickApprove.click();
         console.log("Congratulations! Your Budget Request has been successfully approved!")
     } else {
         console.log("Legal Approval has been processed successfully.")
         await labelBudgetApproval.click();
+        await page.waitForTimeout(3000);
         await checkBudgetApprovalVerified.isVisible()
-        await clickSummary.click();
+        await labelBudgetApproval.click();
     }
 
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(3000);
 });
