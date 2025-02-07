@@ -54,7 +54,7 @@ test('Navigate to Login Page', async ({ page }) => {
     // const isForgotPWText = await resetPWText.isVisible();
     // console.log(isForgotPWText ? "Text is visible!" : "Text is NOT visible!");
 
-    // Get to the Dashboard 
+    // ** Get to the Dashboard **
     const url = `${pageURLs.requestUrl}${pageURLs.requestId}`;
     console.log("Navigating to QA Challenge Dashboard", url);
     await page.goto(url);
@@ -68,19 +68,18 @@ test('Navigate to Login Page', async ({ page }) => {
     const displayedPrice = parseFloat(await updatedPriceCheck.textContent().then(text => text.replace(/[^0-9.]/g, '')));
     console.log("Retrieved numeric price:", displayedPrice);
 
-    //Current price > 100 USD but < 500 -> triggers budget approval - Verify Budget approval is triggered
+    // Current price > 100 USD but < 500 -> triggers budget approval - Verify Budget approval is triggered
     if (displayedPrice > inputPriceOne && displayedPrice < expectedPrice) {
         console.log("You need Budget & Legal Approvals", displayedPrice);
         await expect(labelLegalApproval).toBeVisible();
         await expect(labelBudgetApproval).toBeVisible();
 
-        //Current price > 500 USD -> triggers Managers approval. Check if Budget approval is triggered.
+        // Current price > 500 USD -> triggers Managers approval. Check if Budget approval is triggered.
     } else if (displayedPrice > expectedPrice) {
         console.log("You need the Manager Approval", displayedPrice);
-        await expect(labelManagerApproval).toBeVisible();
-        // await expect(labelBudgetApproval).toBeVisible();
-        // await expect(labelLegalApproval).toBeVisible();
-
+        await expect(labelManagerApproval).toBeVisible(); // check for Manager label
+        // await expect(labelBudgetApproval).toBeVisible(); // check for Budget label
+        // await expect(labelLegalApproval).toBeVisible(); // check for Legal label
     } else {
         console.log("You are all set, need only Legal Approval")
     }
